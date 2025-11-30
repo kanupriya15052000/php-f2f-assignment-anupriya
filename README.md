@@ -1,14 +1,24 @@
-The following two APIs are required for development (no UI implementation needed; please demonstrate functionality using Postman):
+# PHP/Laravel Assignment – JWT + Add to Cart API
 
-1. Implement JWT authentication for user access.
-2. Create an API endpoint to add a product to the cart.
+## Features Implemented
+- JWT Authentication (Register, Login, Me)
+- Add Product to Cart API
+- Cart + Cart Items tables
+- Product Seeder for testing
+- Postman testing for all endpoints
 
-Develop at: 
-```
-https://github.com/Phantasm-Solutions-Ltd-Pvt/php-f2f-for-candidate
+## Endpoints
+POST /api/register  
+POST /api/login  
+POST /api/cart/add  (Protected using JWT)
 
-```
-Please ensure these implementations are set up prior to joining, in order to streamline the face-to-face interview process.
+## How to run
+1. composer install
+2. cp .env.example .env
+3. Update DB settings
+4. php artisan key:generate
+5. php artisan migrate
+6. php artisan db:seed --class=ProductSeeder
+7. php artisan jwt:secret
+8. php artisan serve
 
-Best regards,  
-Phantasm
