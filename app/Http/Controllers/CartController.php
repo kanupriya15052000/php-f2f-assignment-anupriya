@@ -21,21 +21,18 @@ class CartController extends Controller
 
         $user = JWTAuth::user();
 
-        // 1️⃣ Find or create an open cart for this user
         $cart = Cart::firstOrCreate(
             ['user_id' => $user->id, 'status' => 'open'],
             ['total_amount' => 0]
         );
 
-        // 2️⃣ Get product price (assuming product table exists)
+       
         $price = 100; // default
-        // If you have product table, uncomment:
-        // $price = Product::find($request->product_id)->price ?? 0;
-
+        
         $qty = $request->quantity ?? 1;
         $lineTotal = $qty * $price;
 
-        // 3️⃣ Add item to cart_items table
+       
         $item = CartItem::create([
             'cart_id'    => $cart->id,
             'product_id' => $request->product_id,
